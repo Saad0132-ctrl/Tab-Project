@@ -83,32 +83,87 @@
 // }}
 // export default App
 
+// import A from './components/A'
+// import React, { useState } from 'react'
+// function App () {
+//   const [active, setActive] = useState(null)
+//     const obj={
+//     a:'A',
+//     b:'B',
+//     c:'C',
+//     d:'D'
+//   }
+//   function handle (butt) {
+//     setActive(butt)
+//   }
+//   return (
+//     <>
+//       <A text={obj.a} color={active =="a"? 'red' : 'white'} handle={()=>handle('a')} />
+//       <A text={obj.b} color={active=="b" ? 'red' : 'white'} handle={()=>handle('b')} />
+//       <A text={obj.c} color={active=="c" ? 'red' : 'white'} handle={()=>handle('c')} />
+//       <A text={obj.d} color={active=="d" ? 'red' : 'white'} handle={()=>handle('d')} />
+
+//       {active  && <p>I am {active}</p> }
+//     </>
+//   )
+// }
+// export default App
 
 
-import A from './components/A'
-import React, { useState } from 'react'
+import { useState } from "react"
+
 function App () {
-  const [active, setActive] = useState(null)
-    const obj={
-    a:'A',
-    b:'B',
-    c:'C',
-    d:'D'
+  const [formData, setData] = useState({
+    nam: '',
+    age: ''
+  })
+
+  const handleChangeName = e => {
+    return setData({
+      nam: e.target.value,
+      age: formData.age
+    })
   }
-  function handle (butt) {
-    setActive(butt)
+  const handleChangeAge = e => {
+    return setData({
+      nam: formData.nam,
+      age: e.target.value
+    })
   }
+
+  console.log(formData)
   return (
     <>
-      <A text={obj.a} color={active =="a"? 'red' : 'white'} handle={()=>handle('a')} />
-      <A text={obj.b} color={active=="b" ? 'red' : 'white'} handle={()=>handle('b')} />
-      <A text={obj.c} color={active=="c" ? 'red' : 'white'} handle={()=>handle('c')} />
-      <A text={obj.d} color={active=="d" ? 'red' : 'white'} handle={()=>handle('d')} />
-
-      {active  && <p>I am {active}</p> }
+      <div className='min-h-screen flex items-center justify-center bg-gray-100'>
+        <div className='bg-white p-6 rounded-lg shadow-md w-96'>
+          <h2 className='text-xl font-semibold mb-4 text-center'>User Form</h2>
+          <input
+            type='text'
+            name='nam'
+            placeholder='Enter name'
+            value={formData.nam}
+            onChange={handleChangeName}
+            className='w-full p-3 border rounded mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400'
+          />
+          <input
+            type='number'
+            name='age'
+            placeholder='Enter age'
+            value={formData.age}
+            onChange={handleChangeAge}
+            className='w-full p-3 border rounded mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400'
+          />
+          <div className='p-4 bg-gray-50 rounded-lg mt-4 text-center'>
+            <p className='text-lg font-medium text-gray-700'>
+              Name: {formData.nam}
+            </p>
+            <p className='text-lg font-medium text-gray-700'>
+              Age: {formData.age}
+            </p>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
 export default App
-
-
