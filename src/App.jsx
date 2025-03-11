@@ -114,19 +114,19 @@ import { useState } from "react"
 
 function App () {
   const [formData, setData] = useState({
-    nam: '',
+    name: '',
     age: ''
   })
 
   const handleChangeName = e => {
     return setData({
-      nam: e.target.value,
+      name: e.target.value,
       age: formData.age
     })
   }
   const handleChangeAge = e => {
     return setData({
-      nam: formData.nam,
+      name: formData.name,
       age: e.target.value
     })
   }
@@ -141,7 +141,7 @@ function App () {
             type='text'
             name='nam'
             placeholder='Enter name'
-            value={formData.nam}
+            value={formData.name}
             onChange={handleChangeName}
             className='w-full p-3 border rounded mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400'
           />
@@ -155,7 +155,7 @@ function App () {
           />
           <div className='p-4 bg-gray-50 rounded-lg mt-4 text-center'>
             <p className='text-lg font-medium text-gray-700'>
-              Name: {formData.nam}
+              Name: {formData.name}
             </p>
             <p className='text-lg font-medium text-gray-700'>
               Age: {formData.age}
