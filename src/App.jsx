@@ -118,17 +118,18 @@ function App () {
     age: ''
   })
 
-  const handleChangeName = e => {
-    return setData({
-      name: e.target.value,
-      age: formData.age
-    })
-  }
-  const handleChangeAge = e => {
-    return setData({
-      name: formData.name,
-      age: e.target.value
-    })
+  // const handleChangeName = e => {
+  //   return setData({
+  //     name: e.target.value,
+  //     age: formData.age
+  //   })
+  // }
+  const handleChange = e => {
+    const { name, value } = e.target
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
   }
 
   console.log(formData)
@@ -139,10 +140,10 @@ function App () {
           <h2 className='text-xl font-semibold mb-4 text-center'>User Form</h2>
           <input
             type='text'
-            name='nam'
+            name='name'
             placeholder='Enter name'
             value={formData.name}
-            onChange={handleChangeName}
+            onChange={handleChange}
             className='w-full p-3 border rounded mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400'
           />
           <input
@@ -150,7 +151,7 @@ function App () {
             name='age'
             placeholder='Enter age'
             value={formData.age}
-            onChange={handleChangeAge}
+            onChange={handleChange}
             className='w-full p-3 border rounded mb-3 focus:outline-none focus:ring-2 focus:ring-blue-400'
           />
           <div className='p-4 bg-gray-50 rounded-lg mt-4 text-center'>
